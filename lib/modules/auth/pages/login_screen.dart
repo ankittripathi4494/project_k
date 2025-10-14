@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_k/global/widgets/appbar_widget.dart';
 
 class LoginScreen extends StatelessWidget {
   Map<String, dynamic>? arguments;
@@ -6,6 +7,8 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: MyAppBar.appBarWidgetV2(),
+    );
   }
 }
