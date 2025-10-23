@@ -8,7 +8,14 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar.appBarWidgetV2(),
+      appBar: MyAppBar.appBarWidgetV1(titleWidget: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Icon(Icons.login),
+          SizedBox(width: 10,),
+          Text("Login"),
+        ],
+      ) ),
     );
   }
 }

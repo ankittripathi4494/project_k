@@ -1,21 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:project_k/global/widgets/appbar_widget.dart';
+import 'package:project_k/modules/auth/pages/login_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   Map<String, dynamic>? arguments;
   SplashScreen({super.key, this.arguments});
-final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       key: _scaffoldKey,
-      appBar: MyAppBar.appBarWidgetV2(),
-      drawer: Drawer(
-       
+      appBar: MyAppBar.appBarWidgetV1(
+        titleText: "Splash Screen",
+
+        actions: [
+          IconButton(onPressed: () {}, icon: Icon(Icons.settings)),
+          IconButton(onPressed: () {}, icon: Icon(Icons.logout)),
+        ],
       ),
-      body: Container(color: Colors.red),
-      floatingActionButton: FloatingActionButton(onPressed: null),
+      drawer: Drawer(),
+      body: ListView.builder(itemBuilder:   (context, index) {
+        return ListTile(
+          title: Text("Item $index"),
+        );
+      }, itemCount: 20,),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(
+            context,
+            '/login',
+           
+          );
+        },
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
@@ -41,13 +58,14 @@ final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
         ],
       ),
       persistentFooterButtons: [
-        ElevatedButton(onPressed: () {
-          _scaffoldKey.currentState!.openDrawer();
-        }, child: Text("Button 1")),
+        ElevatedButton(
+          onPressed: () {
+            _scaffoldKey.currentState!.openDrawer();
+          },
+          child: Text("Button 1"),
+        ),
         ElevatedButton(onPressed: () {}, child: Text("Button 2")),
       ],
     );
   }
-
-  
 }
