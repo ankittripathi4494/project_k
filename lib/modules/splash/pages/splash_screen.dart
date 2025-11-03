@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_k/global/widgets/appbar_widget.dart';
+import 'package:project_k/global/widgets/drawer_widget.dart';
 import 'package:project_k/modules/auth/pages/login_screen.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -18,19 +19,17 @@ class SplashScreen extends StatelessWidget {
           IconButton(onPressed: () {}, icon: Icon(Icons.logout)),
         ],
       ),
-      drawer: Drawer(),
-      body: ListView.builder(itemBuilder:   (context, index) {
-        return ListTile(
-          title: Text("Item $index"),
-        );
-      }, itemCount: 20,),
+     
+      drawer: DrawerWidget.getDrawer(context),
+      body: ListView.builder(
+        itemBuilder: (context, index) {
+          return ListTile(title: Text("Item $index"));
+        },
+        itemCount: 20,
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(
-            context,
-            '/login',
-           
-          );
+          Navigator.pushNamed(context, '/login');
         },
       ),
       bottomNavigationBar: BottomNavigationBar(

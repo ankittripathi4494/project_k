@@ -35,6 +35,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   flutter_native_splash: ^2.4.6
+  flutter_svg: ^2.2.1
 
 flutter_native_splash:
   # This package generates native code to customize Flutter's default white native splash screen
