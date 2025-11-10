@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyAppBar {
 
@@ -20,7 +21,7 @@ class MyAppBar {
         titleTextStyle ??
         TextStyle(
           color: Colors.white,
-          fontSize: 20,
+          fontSize: 20.sp,
           fontWeight: FontWeight.bold,
         ),
     title: titleWidget ?? Text(titleText ?? ""),
@@ -35,6 +36,7 @@ class MyAppBar {
     List<Widget>? actions,
   }) => AppBar(
     flexibleSpace: Container(
+      margin: EdgeInsets.all(3.r),
       decoration: BoxDecoration(
         gradient: LinearGradient(colors: [Colors.white, Colors.deepOrange]),
       ),
@@ -43,7 +45,7 @@ class MyAppBar {
         titleTextStyle ??
         TextStyle(
           color: Colors.white,
-          fontSize: 20,
+          fontSize: 20.sp,
           fontWeight: FontWeight.bold,
         ),
     iconTheme: iconTheme ?? IconThemeData(color: Colors.white),

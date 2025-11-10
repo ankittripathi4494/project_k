@@ -48,6 +48,7 @@ class DrawerWidget {
 
   static getDrawer(BuildContext context) {
     final menuOptions = optionList.map((e) => MenuOption.fromJson(e)).toList();
+   
     return Drawer(
       child: Column(
         children: [
@@ -84,7 +85,7 @@ class DrawerWidget {
                 return ListTile(
                   onTap: () => getTapValue(context, item),
                   leading: Icon(item.icon),
-                  title: Text(item.optionName),
+                  title: Text(item.optionName, ),
                   // trailing: item.subOptions != null
                   //     ? Icon(Icons.arrow_drop_down)
                   //     : null,
@@ -95,14 +96,41 @@ class DrawerWidget {
         ],
       ),
     );
+    
+
   }
 
   static void getTapValue(BuildContext context, MenuOption item) {
     switch (item.optionValue) {
       case 'home':
-        Navigator.pushReplacementNamed(context, '/');
+        _home(context);
+      case 'profile':
+        _profile(context);
+      case 'customer_list':
+        _customerList(context);
+      case 'add_customer':
+        _customerAdd(context);
+      case 'logout':
+        _logout(context);
 
       default:
     }
+  }
+
+  static _home(BuildContext context) =>
+      Navigator.pushReplacementNamed(context, '/');
+
+  static _profile(BuildContext context) =>
+      Navigator.pushReplacementNamed(context, '/');
+
+  static _customerList(BuildContext context) =>
+      Navigator.pushReplacementNamed(context, '/');
+
+  static _customerAdd(BuildContext context) =>
+      Navigator.pushReplacementNamed(context, '/');
+
+  static _logout(BuildContext context) {
+    Navigator.pop(context);
+    Navigator.pushReplacementNamed(context, '/login');
   }
 }
