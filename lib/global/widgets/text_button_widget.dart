@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ElevatedButtonWidget extends StatelessWidget {
+class TextButtonWidget extends StatelessWidget {
   final Function()? onPressed;
   final String? buttonText;
   final ButtonStyle? style;
   final Widget? icon;
-  const ElevatedButtonWidget({
+  const TextButtonWidget({
     super.key,
     this.onPressed,
     this.buttonText,
@@ -16,34 +16,31 @@ class ElevatedButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButtonTheme(
-      data: ElevatedButtonThemeData(
+    return TextButtonTheme(
+      data: TextButtonThemeData(
         style:
             style ??
-            ElevatedButton.styleFrom(
-              backgroundColor: Colors.red, // enable background color
-              foregroundColor: Colors.white, // enable foreground color
+            TextButton.styleFrom(
+              // backgroundColor: Colors.green, // enable background color
+              foregroundColor: Colors.red, // enable foreground color
               iconColor: Colors.amber,
               disabledBackgroundColor:
                   Colors.blueGrey, // enable background color
               disabledForegroundColor: Colors.black, // enable foreground color
-              shadowColor: Colors.blue,
+              // shadowColor: Colors.blue,
               elevation: 4,
               visualDensity: VisualDensity.comfortable,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadiusGeometry.circular(10.r),
-                side: BorderSide(color: Colors.black, width: 3.r),
-              ),
+              
             ),
       ),
       child: (icon != null)
-          ? ElevatedButton.icon(
+          ? TextButton.icon(
               onPressed: onPressed,
 
               icon: icon,
               label: Text(buttonText ?? ''),
             )
-          : ElevatedButton(onPressed: onPressed, child: Text(buttonText ?? '')),
+          : TextButton(onPressed: onPressed, child: Text(buttonText ?? '')),
     );
   }
 }

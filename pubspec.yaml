@@ -38,6 +38,7 @@ dependencies:
   flutter_svg: ^2.2.1
   flutter_screenutil: ^5.9.3
   connectivity_plus: ^7.0.0
+  duration_button: ^1.0.0
 
 flutter_native_splash:
   # This package generates native code to customize Flutter's default white native splash screen
