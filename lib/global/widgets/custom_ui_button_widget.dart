@@ -6,12 +6,14 @@ class CustomUiButtonWidget extends StatelessWidget {
   final String? buttonText;
   final ButtonStyle? style;
   final Widget? icon;
+  final Gradient? gradient;
   const CustomUiButtonWidget({
     super.key,
     this.onPressed,
     this.buttonText,
     this.style,
     this.icon,
+    this.gradient,
   });
 
   @override
@@ -75,9 +77,9 @@ class CustomUiButtonWidget extends StatelessWidget {
         padding: EdgeInsets.all(10.r),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(20.r)),
-          gradient: LinearGradient(
-            colors: [Colors.deepPurple, Colors.blueAccent],
-          ),
+          gradient:
+              gradient ??
+              LinearGradient(colors: [Colors.deepPurple, Colors.blueAccent]),
         ),
         child: Text(buttonText ?? '', style: TextStyle(color: Colors.white)),
       ),
