@@ -32,7 +32,7 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         color: Colors.red,
         child: AppBar(
           elevation: 30,
-centerTitle: centerTitle,
+    centerTitle: centerTitle,
           shadowColor: Colors.black,
           automaticallyImplyLeading: automaticallyImplyLeading,
           backgroundColor: Colors.transparent,

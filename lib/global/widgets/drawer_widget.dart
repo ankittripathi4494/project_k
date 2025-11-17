@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:project_k/global/helpers/image_resource_helper.dart';
 import 'package:project_k/global/models/menu_option.dart';
+import 'package:project_k/global/utils/image_list.dart';
 
 class DrawerWidget {
   static List<Map<String, dynamic>> optionList = [
@@ -57,7 +57,7 @@ class DrawerWidget {
               color: const Color.fromARGB(145, 80, 34, 19),
             ),
             child: SvgPicture.asset(
-              ImageResourseHelper.logoSVGResource,
+              ResourseList.logoSVGResource,
               fit: BoxFit.contain,
             ),
           ),

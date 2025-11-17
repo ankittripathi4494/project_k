@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:project_k/global/helpers/image_resource_helper.dart';
 import 'package:project_k/global/helpers/network_helper.dart';
-import 'package:project_k/global/widgets/automatic_button_widget.dart';
+import 'package:project_k/global/utils/image_list.dart';
 import 'package:project_k/global/widgets/custom_ui_button_widget.dart';
-import 'package:project_k/global/widgets/elevated_button_widget.dart';
-import 'package:project_k/global/widgets/filled_button_widget.dart';
-import 'package:project_k/global/widgets/icon_button_widget.dart';
-import 'package:project_k/global/widgets/outlined_button_widget.dart';
-import 'package:project_k/global/widgets/text_button_widget.dart';
 
 class NetworkErrorScreen extends StatelessWidget {
   Map<String, dynamic>? arguments;
@@ -24,7 +17,7 @@ ValueNotifier<bool> isSelectedValue = ValueNotifier<bool>(false);
         top: false,
         child: Scaffold(
           body: Center(
-            child: SvgPicture.asset(ImageResourseHelper.networkSVGResource),
+            child: SvgPicture.asset(ResourseList.networkSVGResource),
           ),
           persistentFooterAlignment: AlignmentDirectional.bottomCenter,
           persistentFooterButtons: [

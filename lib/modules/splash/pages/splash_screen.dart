@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:project_k/global/helpers/image_resource_helper.dart';
 import 'package:project_k/global/helpers/network_helper.dart';
+import 'package:project_k/global/utils/image_list.dart';
 
 class SplashScreen extends StatefulWidget {
   Map<String, dynamic>? arguments;
@@ -36,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
       canPop: false,
       child: Scaffold(
         body: Center(
-          child: SvgPicture.asset(ImageResourseHelper.logoSVGResource),
+          child: SvgPicture.asset(ResourseList.logoSVGResource),
         ),
       ),
     );
