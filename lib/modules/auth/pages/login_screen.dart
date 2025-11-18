@@ -30,7 +30,7 @@ class LoginScreen extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(20.r)),
               child: SizedBox(
                 width: 1.sw,
-                height: 0.2.sh,
+                
                 child: LoginFormWidget(),
               ),
             ),

@@ -81,6 +81,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
+  cross_file:
+    dependency: transitive
+    description:
+      name: cross_file
+      sha256: "942a4791cd385a68ccb3b32c71c427aba508a1bb949b86dff2adbe4049f16239"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.5"
   crypto:
     dependency: transitive
     description:
@@ -208,6 +216,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.2"
+  i_validator:
+    dependency: "direct main"
+    description:
+      name: i_validator
+      sha256: "79c4e86886103c740ad6c9fec65055b3116c11552063634d6ca6a5e5fb758067"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.6"
   image:
     dependency: transitive
     description:
