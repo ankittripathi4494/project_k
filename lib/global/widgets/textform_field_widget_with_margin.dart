@@ -79,9 +79,9 @@ class TextFormFieldWidgetWithMargin extends StatelessWidget {
     this.obscureText = false,
     this.counterText = '',
     this.style,
-     this.helperStyle,
-      this.hintStyle,
-       this.labelStyle,
+    this.helperStyle,
+    this.hintStyle,
+    this.labelStyle,
     this.textCapitalization = TextCapitalization.none,
     this.keyboardType = TextInputType.text,
   });
@@ -150,27 +150,33 @@ class TextFormFieldWidgetWithMargin extends StatelessWidget {
               : ((darkTheme == false) ? Colors.orange : Colors.green),
           helper: (helper != null) ? helper : null,
           helperText: (helperText != null) ? helperText : null,
-          helperStyle: helperStyle?? TextStyle(
-            fontSize: 12.sp,
-            color: (formEnabled == true)
-                ? ((darkTheme == true) ? Colors.white : Colors.black)
-                : ((darkTheme == false) ? Colors.orange : Colors.green),
-          ),
+          helperStyle:
+              helperStyle ??
+              TextStyle(
+                fontSize: 12.sp,
+                color: (formEnabled == true)
+                    ? ((darkTheme == true) ? Colors.white : Colors.black)
+                    : ((darkTheme == false) ? Colors.orange : Colors.green),
+              ),
           label: (label != null) ? label : null,
           labelText: (labelText != null) ? labelText : null,
-          labelStyle: labelStyle??TextStyle(
-            fontSize: 12.sp,
-            color: (formEnabled == true)
-                ? ((darkTheme == true) ? Colors.white : Colors.black)
-                : ((darkTheme == false) ? Colors.orange : Colors.green),
-          ),
+          labelStyle:
+              labelStyle ??
+              TextStyle(
+                fontSize: 12.sp,
+                color: (formEnabled == true)
+                    ? ((darkTheme == true) ? Colors.white : Colors.black)
+                    : ((darkTheme == false) ? Colors.orange : Colors.green),
+              ),
           hintText: (hintText != null) ? hintText : null,
-          hintStyle:  hintStyle??TextStyle(
-            fontSize: 12.sp,
-            color: (formEnabled == true)
-                ? ((darkTheme == true) ? Colors.white : Colors.black)
-                : ((darkTheme == false) ? Colors.orange : Colors.green),
-          ),
+          hintStyle:
+              hintStyle ??
+              TextStyle(
+                fontSize: 12.sp,
+                color: (formEnabled == true)
+                    ? ((darkTheme == true) ? Colors.white : Colors.black)
+                    : ((darkTheme == false) ? Colors.orange : Colors.green),
+              ),
           error: (error != null) ? error : null,
           errorText: (errorText != null) ? errorText : null,
           errorStyle: TextStyle(
