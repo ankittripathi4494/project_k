@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> redirectMethod() async {
     bool networkConnected = await NetworkHelper.checkNetworkConnectivity();
     if (networkConnected == true) {
-      Navigator.pushNamed(context, '/login');
+      Navigator.pushNamed(context, '/login', arguments: {'title': 'Login'});
     } else {
       Navigator.pushNamed(context, '/network-error');
     }

@@ -42,6 +42,7 @@ class TextFormFieldWidgetWithMargin extends StatelessWidget {
   final TextStyle? hintStyle;
   final TextStyle? labelStyle;
   final EdgeInsetsGeometry? contentPadding;
+  final AutovalidateMode? autovalidateMode;
 
   const TextFormFieldWidgetWithMargin({
     super.key,
@@ -82,6 +83,7 @@ class TextFormFieldWidgetWithMargin extends StatelessWidget {
     this.helperStyle,
     this.hintStyle,
     this.labelStyle,
+    this.autovalidateMode,
     this.textCapitalization = TextCapitalization.none,
     this.keyboardType = TextInputType.text,
   });
@@ -110,6 +112,7 @@ class TextFormFieldWidgetWithMargin extends StatelessWidget {
         textCapitalization: textCapitalization,
         onChanged: onChanged,
         obscureText: obscureText!,
+        autovalidateMode: autovalidateMode,
         onEditingComplete: onEditingComplete,
         onFieldSubmitted: onFieldSubmitted,
         readOnly: readOnly ?? false,

@@ -42,6 +42,7 @@ class TextFormFieldWidgetWithoutMargin extends StatelessWidget {
   final TextStyle? hintStyle;
   final TextStyle? labelStyle;
   final EdgeInsetsGeometry? contentPadding;
+  final AutovalidateMode? autovalidateMode;
 
   const TextFormFieldWidgetWithoutMargin({
     super.key,
@@ -79,142 +80,141 @@ class TextFormFieldWidgetWithoutMargin extends StatelessWidget {
     this.obscureText = false,
     this.counterText = '',
     this.style,
-     this.helperStyle,
-      this.hintStyle,
-       this.labelStyle,
+    this.helperStyle,
+    this.hintStyle,
+    this.labelStyle,
+    this.autovalidateMode,
     this.textCapitalization = TextCapitalization.none,
     this.keyboardType = TextInputType.text,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.all(8.0.r),
-      margin: EdgeInsets.only(
-        // top: 10.h,
-        left: 10.w,
-        right: 10.w,
-      ),
-      child: TextFormField(
-        validator: validator,
-        onTap: onTap,
-        autofillHints: autofillHints,
-        enabled: formEnabled,
-        controller: controller,
-        keyboardType: keyboardType,
-        inputFormatters: inputFormatters,
-        maxLength: maxLength,
-        minLines: minLines,
-        maxLines: (obscureText == true) ? 1 : maxLines,
-        textCapitalization: textCapitalization,
-        onChanged: onChanged,
-        obscureText: obscureText!,
-        onEditingComplete: onEditingComplete,
-        onFieldSubmitted: onFieldSubmitted,
-        readOnly: readOnly ?? false,
-        style:
-            style ??
+    return TextFormField(
+      validator: validator,
+      onTap: onTap,
+      autofillHints: autofillHints,
+      enabled: formEnabled,
+      controller: controller,
+      keyboardType: keyboardType,
+      inputFormatters: inputFormatters,
+      maxLength: maxLength,
+      minLines: minLines,
+      maxLines: (obscureText == true) ? 1 : maxLines,
+      textCapitalization: textCapitalization,
+      onChanged: onChanged,
+      obscureText: obscureText!,
+      onEditingComplete: onEditingComplete,
+      onFieldSubmitted: onFieldSubmitted,
+      readOnly: readOnly ?? false,
+      autovalidateMode: autovalidateMode,
+      style:
+          style ??
+          TextStyle(
+            fontSize: 12.sp,
+            color: (formEnabled == true)
+                ? ((darkTheme == true) ? Colors.white : Colors.black)
+                : ((darkTheme == false) ? Colors.grey : Colors.green),
+          ),
+      decoration: InputDecoration(
+        isDense: isDense,
+        contentPadding: contentPadding,
+        counterText: counterText,
+        icon: (icon != null) ? icon : null,
+        iconColor: (formEnabled == true)
+            ? ((darkTheme == true) ? Colors.white : Colors.black)
+            : ((darkTheme == false) ? Colors.grey : Colors.green),
+        prefix: (prefix != null) ? prefix : null,
+        prefixText: (prefixText != null) ? prefixText : null,
+        prefixIcon: (prefixIcon != null)
+            ? Padding(
+                padding: EdgeInsets.all(8.0.r),
+                child: Icon(prefixIcon, size: 20.r),
+              )
+            : null,
+        prefixIconColor: (formEnabled == true)
+            ? ((darkTheme == true) ? Colors.white : Colors.black)
+            : ((darkTheme == false) ? Colors.grey : Colors.green),
+        suffix: (suffix != null) ? suffix : null,
+        suffixText: (suffixText != null) ? suffixText : null,
+        suffixIcon: (suffixIcon != null)
+            ? Padding(padding: EdgeInsets.all(8.0.r), child: suffixIcon)
+            : null,
+        suffixIconColor: (formEnabled == true)
+            ? ((darkTheme == true) ? Colors.white : Colors.black)
+            : ((darkTheme == false) ? Colors.grey : Colors.green),
+        helper: (helper != null) ? helper : null,
+        helperText: (helperText != null) ? helperText : null,
+        helperStyle:
+            helperStyle ??
             TextStyle(
               fontSize: 12.sp,
               color: (formEnabled == true)
                   ? ((darkTheme == true) ? Colors.white : Colors.black)
                   : ((darkTheme == false) ? Colors.grey : Colors.green),
             ),
-        decoration: InputDecoration(
-          isDense: isDense,
-          contentPadding: contentPadding,
-          counterText: counterText,
-          icon: (icon != null) ? icon : null,
-          iconColor: (formEnabled == true)
-              ? ((darkTheme == true) ? Colors.white : Colors.black)
-              : ((darkTheme == false) ? Colors.grey : Colors.green),
-          prefix: (prefix != null) ? prefix : null,
-          prefixText: (prefixText != null) ? prefixText : null,
-          prefixIcon: (prefixIcon != null)
-              ? Padding(
-                  padding: EdgeInsets.all(8.0.r),
-                  child: Icon(prefixIcon, size: 20.r),
-                )
-              : null,
-          prefixIconColor: (formEnabled == true)
-              ? ((darkTheme == true) ? Colors.white : Colors.black)
-              : ((darkTheme == false) ? Colors.grey : Colors.green),
-          suffix: (suffix != null) ? suffix : null,
-          suffixText: (suffixText != null) ? suffixText : null,
-          suffixIcon: (suffixIcon != null)
-              ? Padding(padding: EdgeInsets.all(8.0.r), child: suffixIcon)
-              : null,
-          suffixIconColor: (formEnabled == true)
-              ? ((darkTheme == true) ? Colors.white : Colors.black)
-              : ((darkTheme == false) ? Colors.grey : Colors.green),
-          helper: (helper != null) ? helper : null,
-          helperText: (helperText != null) ? helperText : null,
-          helperStyle: helperStyle?? TextStyle(
-            fontSize: 12.sp,
-            color: (formEnabled == true)
-                ? ((darkTheme == true) ? Colors.white : Colors.black)
-                : ((darkTheme == false) ? Colors.grey : Colors.green),
-          ),
-          label: (label != null) ? label : null,
-          labelText: (labelText != null) ? labelText : null,
-          labelStyle: labelStyle??TextStyle(
-            fontSize: 12.sp,
-            color: (formEnabled == true)
-                ? ((darkTheme == true) ? Colors.white : Colors.black)
-                : ((darkTheme == false) ? Colors.grey : Colors.green),
-          ),
-          hintText: (hintText != null) ? hintText : null,
-          hintStyle:  hintStyle??TextStyle(
-            fontSize: 12.sp,
-            color: (formEnabled == true)
-                ? ((darkTheme == true) ? Colors.white : Colors.black)
-                : ((darkTheme == false) ? Colors.grey : Colors.green),
-          ),
-          error: (error != null) ? error : null,
-          errorText: (errorText != null) ? errorText : null,
-          errorStyle: TextStyle(
-            color: Colors.red,
-            fontWeight: FontWeight.w400,
-            fontSize: 12.sp,
-          ),
-          errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.r),
-            borderSide: BorderSide(color: Colors.red, width: 1.r),
-          ),
-          disabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.r),
-            borderSide: BorderSide(
-              color: (darkTheme == false) ? Colors.grey : Colors.green,
-              width: 1.r,
-            ),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.r),
-            borderSide: BorderSide(
+        label: (label != null) ? label : null,
+        labelText: (labelText != null) ? labelText : null,
+        labelStyle:
+            labelStyle ??
+            TextStyle(
+              fontSize: 12.sp,
               color: (formEnabled == true)
-                  ? ((darkTheme == false) ? Colors.black : Colors.white)
+                  ? ((darkTheme == true) ? Colors.white : Colors.black)
                   : ((darkTheme == false) ? Colors.grey : Colors.green),
-              width: 1.r,
             ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.r),
-            borderSide: BorderSide(
+        hintText: (hintText != null) ? hintText : null,
+        hintStyle:
+            hintStyle ??
+            TextStyle(
+              fontSize: 12.sp,
               color: (formEnabled == true)
-                  ? ((darkTheme == false) ? Colors.black : Colors.white)
+                  ? ((darkTheme == true) ? Colors.white : Colors.black)
                   : ((darkTheme == false) ? Colors.grey : Colors.green),
-              width: 1.r,
             ),
+        error: (error != null) ? error : null,
+        errorText: (errorText != null) ? errorText : null,
+        errorStyle: TextStyle(
+          color: Colors.red,
+          fontWeight: FontWeight.w400,
+          fontSize: 12.sp,
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.r),
+          borderSide: BorderSide(color: Colors.red, width: 1.r),
+        ),
+        disabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.r),
+          borderSide: BorderSide(
+            color: (darkTheme == false) ? Colors.grey : Colors.green,
+            width: 1.r,
           ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.r),
-            borderSide: BorderSide(
-              color: (formEnabled == true)
-                  ? ((darkTheme == false) ? Colors.black : Colors.white)
-                  : ((darkTheme == false) ? Colors.grey : Colors.green),
-              width: 1.r,
-            ),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.r),
+          borderSide: BorderSide(
+            color: (formEnabled == true)
+                ? ((darkTheme == false) ? Colors.black : Colors.white)
+                : ((darkTheme == false) ? Colors.grey : Colors.green),
+            width: 1.r,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.r),
+          borderSide: BorderSide(
+            color: (formEnabled == true)
+                ? ((darkTheme == false) ? Colors.black : Colors.white)
+                : ((darkTheme == false) ? Colors.grey : Colors.green),
+            width: 1.r,
+          ),
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.r),
+          borderSide: BorderSide(
+            color: (formEnabled == true)
+                ? ((darkTheme == false) ? Colors.black : Colors.white)
+                : ((darkTheme == false) ? Colors.grey : Colors.green),
+            width: 1.r,
           ),
         ),
       ),

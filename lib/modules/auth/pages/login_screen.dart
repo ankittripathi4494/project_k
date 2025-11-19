@@ -20,7 +20,9 @@ class LoginScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         appBar: MyCustomAppBar(
           automaticallyImplyLeading: false,
-          titleText: "Login",
+          titleText: (arguments != null && arguments!.containsKey('title'))
+              ? arguments!['title']
+              : "Login",
         ),
         body: Center(
           child: Container(
@@ -38,5 +40,6 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
     );
+  
   }
 }

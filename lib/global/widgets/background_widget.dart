@@ -33,20 +33,23 @@ R -> Red -> 0-F
 G -> Green -> 0-F
 B -> Blue -> 0-F
     */
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: borderRadius,
-        image: image,
-        gradient: (image == null)
-            ? LinearGradient(
-                begin: beginAlignment,
-                end: endAlignment,
-                colors: colors,
-                transform: GradientRotation(radians),
-              )
-            : null,
+    return SafeArea(
+      top: false,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: borderRadius,
+          image: image,
+          gradient: (image == null)
+              ? LinearGradient(
+                  begin: beginAlignment,
+                  end: endAlignment,
+                  colors: colors,
+                  transform: GradientRotation(radians),
+                )
+              : null,
+        ),
+        child: child,
       ),
-      child: child,
     );
   }
 }
