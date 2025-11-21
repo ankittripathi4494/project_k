@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i_validator/i_validator.dart';
+import 'package:project_k/global/widgets/custom_alert_dialog_widget.dart';
+import 'package:project_k/global/widgets/custom_dialog_widget.dart';
 import 'package:project_k/global/widgets/filled_button_widget.dart';
 import 'package:project_k/global/widgets/text_button_widget.dart';
 import 'package:project_k/global/widgets/textform_field_widget_without_margin.dart';
+import 'package:project_k/global/widgets/toast_widget.dart';
 
 /*
 Login Form Widget -> Inputs for email and password along with login button, and Forget Password link.
@@ -37,13 +40,13 @@ class LoginFormWidget extends StatelessWidget {
               ],
               autovalidateMode: AutovalidateMode.onUserInteraction,
               validator: (value) => EmailValidator().validate(value),
-             
+
               keyboardType: TextInputType.emailAddress,
               prefixIcon: Icons.email,
               labelText: "Email",
               counterText: "",
             ), // Email Input
-            
+
             ValueListenableBuilder(
               valueListenable: showPassword,
               builder: (context, showPasswordValue, child) {
@@ -82,7 +85,10 @@ class LoginFormWidget extends StatelessWidget {
                   if (_formKey.currentState!.validate()) {
                     print("Normal Login");
                   } else {
-                    print("Error in  Login Form");
+                    print(
+                      "Error in  Login Form",
+                    ); // Error show on console to developer not user
+                   ToastWidget.notifyWidget(context, type: NotifyType.error, message: "Error in  Login Form");
                   }
                 },
                 buttonText: "Login",

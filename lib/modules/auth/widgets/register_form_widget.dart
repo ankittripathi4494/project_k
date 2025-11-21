@@ -9,6 +9,7 @@ import 'package:i_validator/validators/phone_validator.dart';
 import 'package:intl/intl.dart';
 import 'package:project_k/global/widgets/filled_button_widget.dart';
 import 'package:project_k/global/widgets/textform_field_widget_without_margin.dart';
+import 'package:project_k/global/widgets/toast_widget.dart';
 
 class RegisterFormWidget extends StatelessWidget {
   RegisterFormWidget({super.key});
@@ -206,7 +207,8 @@ class RegisterFormWidget extends StatelessWidget {
                   if (_formKey.currentState!.validate()) {
                     print("Normal Login");
                   } else {
-                    print("Error in  Login Form");
+                    print("Error in  Register Form");
+                    ToastWidget.notifyWidget(context, type: NotifyType.error, message: "Error in  Register Form");
                   }
                 },
                 buttonText: "Register",
