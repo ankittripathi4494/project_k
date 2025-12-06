@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:i_validator/enum/password_strength.dart';
 import 'package:i_validator/i_validator.dart';
-import 'package:i_validator/validators/email_validator.dart';
-import 'package:i_validator/validators/password_validator.dart';
-import 'package:i_validator/validators/phone_validator.dart';
 import 'package:intl/intl.dart';
 import 'package:project_k/global/widgets/filled_button_widget.dart';
 import 'package:project_k/global/widgets/textform_field_widget_without_margin.dart';
