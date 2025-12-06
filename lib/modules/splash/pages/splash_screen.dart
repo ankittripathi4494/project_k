@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project_k/global/helpers/network_helper.dart';
+import 'package:project_k/global/helpers/secure_session_helper.dart';
 import 'package:project_k/global/utils/image_list.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -24,7 +25,16 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> redirectMethod() async {
     bool networkConnected = await NetworkHelper.checkNetworkConnectivity();
     if (networkConnected == true) {
-      Navigator.pushNamed(context, '/login', arguments: {'title': 'Login'});
+      if ((await SecureSessionHelper().getData('isLoggedIn')) ==
+          true.toString()) {
+        Navigator.pushNamed(
+          context,
+          '/dashboard',
+          arguments: {'title': 'Dashboard Screen'},
+        );
+      } else {
+        Navigator.pushNamed(context, '/login', arguments: {'title': 'Login'});
+      }
     } else {
       Navigator.pushNamed(context, '/network-error');
     }
@@ -35,9 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return PopScope(
       canPop: false,
       child: Scaffold(
-        body: Center(
-          child: SvgPicture.asset(ResourseList.logoSVGResource),
-        ),
+        body: Center(child: SvgPicture.asset(ResourseList.logoSVGResource)),
       ),
     );
   }

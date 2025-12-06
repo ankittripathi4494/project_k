@@ -41,6 +41,14 @@ dependencies:
   duration_button: ^1.0.0
   i_validator: ^1.1.6
   intl: ^0.20.2
+  page_transition: ^2.2.1
+  shared_preferences: ^2.5.3
+  hive: ^2.2.3
+  sqflite: ^2.4.2
+  objectbox: ^5.0.2
+  flutter_secure_storage: ^9.2.4
+  flutter_custom_clippers: ^2.1.0
+  flutter_bloc: ^9.1.1
 
 flutter_native_splash:
   # This package generates native code to customize Flutter's default white native splash screen

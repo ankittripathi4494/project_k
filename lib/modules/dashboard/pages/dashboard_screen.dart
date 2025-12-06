@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_k/global/helpers/secure_session_helper.dart';
 import 'package:project_k/global/widgets/appbar_widget.dart';
 import 'package:project_k/global/widgets/custom_bottom_navigation_bar_widget.dart';
 import 'package:project_k/global/widgets/drawer_widget.dart';
@@ -16,10 +17,20 @@ class DashboardScreen extends StatelessWidget {
 
         actions: [
           IconButton(onPressed: () {}, icon: Icon(Icons.settings)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.logout)),
+          IconButton(
+            onPressed: () {
+              SecureSessionHelper().removeAll();
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                '/login',
+                (route) => false,
+              );
+            },
+            icon: Icon(Icons.logout),
+          ),
         ],
       ),
-     
+
       drawer: DrawerWidget.getDrawer(context),
       body: ListView.builder(
         itemBuilder: (context, index) {
@@ -32,7 +43,7 @@ class DashboardScreen extends StatelessWidget {
           Navigator.pushNamed(context, '/login');
         },
       ),
-      bottomNavigationBar: CustomBottomNavigationBarWidget(selectedIndex: 0,),
+      bottomNavigationBar: CustomBottomNavigationBarWidget(selectedIndex: 0),
       persistentFooterButtons: [
         ElevatedButton(
           onPressed: () {

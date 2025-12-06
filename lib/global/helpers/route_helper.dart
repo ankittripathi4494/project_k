@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:project_k/modules/auth/pages/login_screen.dart';
 import 'package:project_k/modules/auth/pages/register_screen.dart';
 import 'package:project_k/modules/customers/pages/customer_screen.dart';
@@ -11,61 +12,54 @@ import 'package:project_k/modules/transactions/pages/transaction_sceeen.dart';
 
 class RouteHelper {
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
-    var arguments = settings.arguments;
+    dynamic arguments = (settings.arguments is Map<String, dynamic>)
+        ? settings.arguments
+        : {};
     switch (settings.name) {
       case '/':
-        return MaterialPageRoute(
-          builder: (context) => SplashScreen(
-            arguments: (arguments is Map<String, dynamic>) ? arguments : {},
-          ),
+        return PageTransition(
+          type: PageTransitionType.fade,
+          child: SplashScreen(arguments: arguments),
         );
       case '/login':
-        return MaterialPageRoute(
-          builder: (context) => LoginScreen(
-            arguments: (arguments is Map<String, dynamic>) ? arguments : {},
-          ),
+        return PageTransition(
+          type: PageTransitionType.fade,
+          child: LoginScreen(arguments: arguments),
         );
       case '/register':
-        return MaterialPageRoute(
-          builder: (context) => RegisterScreen(
-            arguments: (arguments is Map<String, dynamic>) ? arguments : {},
-          ),
+        return PageTransition(
+          type: PageTransitionType.fade,
+          child: RegisterScreen(arguments: arguments),
         );
       case '/customer-list':
-        return MaterialPageRoute(
-          builder: (context) => CustomerScreen(
-            arguments: (arguments is Map<String, dynamic>) ? arguments : {},
-          ),
+        return PageTransition(
+          type: PageTransitionType.fade,
+          child: CustomerScreen(arguments: arguments),
         );
       case '/dashboard':
-        return MaterialPageRoute(
-          builder: (context) => DashboardScreen(
-            arguments: (arguments is Map<String, dynamic>) ? arguments : {},
-          ),
+        return PageTransition(
+          type: PageTransitionType.fade,
+          child: DashboardScreen(arguments: arguments),
         );
       case '/transaction':
-        return MaterialPageRoute(
-          builder: (context) => TransactionSceeen(
-            arguments: (arguments is Map<String, dynamic>) ? arguments : {},
-          ),
+        return PageTransition(
+          type: PageTransitionType.fade,
+          child: TransactionSceeen(arguments: arguments),
         );
       case '/profile':
-        return MaterialPageRoute(
-          builder: (context) => ProfileScreen(
-            arguments: (arguments is Map<String, dynamic>) ? arguments : {},
-          ),
+        return PageTransition(
+          type: PageTransitionType.fade,
+          child: ProfileScreen(arguments: arguments),
         );
       case '/network-error':
-        return MaterialPageRoute(
-          builder: (context) => NetworkErrorScreen(
-            arguments: (arguments is Map<String, dynamic>) ? arguments : {},
-          ),
+        return PageTransition(
+          type: PageTransitionType.fade,
+          child: NetworkErrorScreen(arguments: arguments),
         );
       default:
-        return MaterialPageRoute(
-          builder: (context) => PageErrorScreen(
-            arguments: (arguments is Map<String, dynamic>) ? arguments : {},
-          ),
+        return PageTransition(
+          type: PageTransitionType.fade,
+          child: PageErrorScreen(arguments: arguments),
         );
     }
   }
