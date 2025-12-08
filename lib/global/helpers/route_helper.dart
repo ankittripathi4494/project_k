@@ -14,7 +14,7 @@ class RouteHelper {
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     dynamic arguments = (settings.arguments is Map<String, dynamic>)
         ? settings.arguments
-        : {};
+        : null;
     switch (settings.name) {
       case '/':
         return PageTransition(

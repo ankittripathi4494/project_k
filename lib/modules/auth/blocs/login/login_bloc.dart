@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project_k/global/utils/extra_utilities.dart';
 import 'package:project_k/modules/auth/repositories/login_repository.dart';
 
 part 'login_event.dart';
@@ -15,9 +16,25 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     LoginFormSubmissionEvent event,
     Emitter<LoginState> emit,
   ) {
-
-    LoginRepository.instance.getFormSubmissionForFirebase();
-
-    LoginRepository.instance.getFormSubmissionForFirebase();
+    emit(LoginFormSubmissionProcession()); // Show Processing
+    if ((event.usernameData.forCompare() == userName.forCompare()) &&
+        (event.passwordData.forCompare() == userPassword.forCompare())) {
+      bool result = LoginRepository.instance.getFormSubmissionForLocalData(
+        event,
+      );
+      if (result == true) {
+        emit(
+          LoginFormSubmissionSuccess(successMessage: "Login SuccessFulla"),
+        ); // replace Processing with success
+      } else {
+        emit(
+          LoginFormSubmissionFailed(errorMessage: "Login Failed"),
+        ); // replace Processing with failed
+      }
+    } else {
+      emit(
+        LoginFormSubmissionFailed(errorMessage: "Wrong username or password"),
+      );
+    }
   }
 }
