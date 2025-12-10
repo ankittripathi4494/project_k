@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:project_k/global/helpers/route_helper.dart';
 import 'package:project_k/global/helpers/secure_session_helper.dart';
+import 'package:project_k/modules/auth/blocs/forget_password/forget_password_bloc.dart';
 import 'package:project_k/modules/auth/blocs/login/login_bloc.dart';
+import 'package:project_k/modules/auth/blocs/register/register_bloc.dart';
 import 'package:project_k/modules/auth/repositories/login_repository.dart';
 
 void main(List<String> args) {
@@ -36,6 +38,12 @@ class MyApplication extends StatelessWidget {
             providers: [
               BlocProvider<LoginBloc>(
                 create: (context) => LoginBloc(repository: LoginRepository()),
+              ),
+              BlocProvider<RegisterBloc>(
+                create: (context) => RegisterBloc(),
+              ),
+               BlocProvider<ForgetPasswordBloc>(
+                create: (context) => ForgetPasswordBloc(),
               ),
             ],
             child: MaterialApp(

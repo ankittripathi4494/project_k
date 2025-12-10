@@ -49,6 +49,7 @@ dependencies:
   flutter_secure_storage: ^9.2.4
   flutter_custom_clippers: ^2.1.0
   flutter_bloc: ^9.1.1
+  path: ^1.9.1
 
 flutter_native_splash:
   # This package generates native code to customize Flutter's default white native splash screen

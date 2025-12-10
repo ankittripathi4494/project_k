@@ -15,26 +15,21 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   _loginFormSubmissionMethod(
     LoginFormSubmissionEvent event,
     Emitter<LoginState> emit,
-  ) {
+  ) async {
+   
     emit(LoginFormSubmissionProcession()); // Show Processing
-    if ((event.usernameData.forCompare() == userName.forCompare()) &&
-        (event.passwordData.forCompare() == userPassword.forCompare())) {
-      bool result = LoginRepository.instance.getFormSubmissionForLocalData(
-        event,
-      );
-      if (result == true) {
-        emit(
-          LoginFormSubmissionSuccess(successMessage: "Login SuccessFulla"),
-        ); // replace Processing with success
-      } else {
-        emit(
-          LoginFormSubmissionFailed(errorMessage: "Login Failed"),
-        ); // replace Processing with failed
-      }
+
+    bool result = await LoginRepository.instance.getFormSubmissionForLocalDatabase(
+      event,
+    );
+    if (result == true) {
+      emit(
+        LoginFormSubmissionSuccess(successMessage: "Login SuccessFull"),
+      ); // replace Processing with success
     } else {
       emit(
-        LoginFormSubmissionFailed(errorMessage: "Wrong username or password"),
-      );
+        LoginFormSubmissionFailed(errorMessage: "Login Failed"),
+      ); // replace Processing with failed
     }
   }
 }

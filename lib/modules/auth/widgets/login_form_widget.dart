@@ -67,6 +67,7 @@ BlocConsumer
             );
           }
         },
+        
         builder: (context, state) {
           return Form(
             key: _formKey,
@@ -90,6 +91,7 @@ BlocConsumer
                     },
                     taskWaitDuration: Duration(seconds: 1),
                   ),
+                
                 TextFormFieldWidgetWithoutMargin(
                   controller: emailController,
                   style: TextStyle(fontSize: 14.sp),

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:project_k/modules/auth/blocs/login/login_bloc.dart';
 import 'package:project_k/modules/auth/pages/login_screen.dart';
 import 'package:project_k/modules/auth/pages/register_screen.dart';
+import 'package:project_k/modules/auth/repositories/login_repository.dart';
 import 'package:project_k/modules/customers/pages/customer_screen.dart';
 import 'package:project_k/modules/dashboard/pages/dashboard_screen.dart';
 import 'package:project_k/modules/errors/pages/network_error_screen.dart';
@@ -24,7 +27,10 @@ class RouteHelper {
       case '/login':
         return PageTransition(
           type: PageTransitionType.fade,
-          child: LoginScreen(arguments: arguments),
+          child: BlocProvider(
+            create: (context) => LoginBloc(repository: LoginRepository()),
+            child: LoginScreen(arguments: arguments),
+          ),
         );
       case '/register':
         return PageTransition(
