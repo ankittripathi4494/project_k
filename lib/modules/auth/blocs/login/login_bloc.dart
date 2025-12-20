@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:project_k/global/utils/extra_utilities.dart';
 import 'package:project_k/modules/auth/repositories/login_repository.dart';
 
 part 'login_event.dart';

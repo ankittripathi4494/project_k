@@ -1,6 +1,5 @@
 import 'dart:async';
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_k/global/helpers/database_helper.dart';
 import 'package:project_k/global/utils/extra_utilities.dart';
 

@@ -1,19 +1,17 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:i_validator/i_validator.dart';
 import 'package:project_k/global/helpers/secure_session_helper.dart';
-import 'package:project_k/global/utils/extra_utilities.dart';
 import 'package:project_k/global/widgets/automatic_button_widget.dart';
-import 'package:project_k/global/widgets/custom_bottom_sheet_widget.dart';
 import 'package:project_k/global/widgets/custom_dialog_widget.dart';
 import 'package:project_k/global/widgets/filled_button_widget.dart';
 import 'package:project_k/global/widgets/text_button_widget.dart';
 import 'package:project_k/global/widgets/textform_field_widget_without_margin.dart';
 import 'package:project_k/global/widgets/toast_widget.dart';
 import 'package:project_k/modules/auth/blocs/login/login_bloc.dart';
-import 'package:project_k/modules/auth/repositories/login_repository.dart';
 
 /*
 Login Form Widget -> Inputs for email and password along with login button, and Forget Password link.
@@ -156,9 +154,11 @@ BlocConsumer
                           ),
                         );
                       } else {
-                        print(
+                        if (kDebugMode) {
+                          print(
                           "Error in  Login Form",
-                        ); // Error show on console to developer not user
+                        );
+                        } // Error show on console to developer not user
                         ToastWidget.notifyWidget(
                           context,
                           type: NotifyType.error,
@@ -177,7 +177,9 @@ BlocConsumer
                         foregroundColor: Colors.white,
                       ),
                       onPressed: () {
-                        print("Forget Password Clicked");
+                        if (kDebugMode) {
+                          print("Forget Password Clicked");
+                        }
                       },
                       buttonText: "Forget Password?",
                     ),

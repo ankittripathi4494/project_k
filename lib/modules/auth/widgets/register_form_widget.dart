@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -266,7 +267,9 @@ class RegisterFormWidget extends StatelessWidget {
                             ),
                           );
                         } else {
-                          print("Error in  Register Form");
+                          if (kDebugMode) {
+                            print("Error in  Register Form");
+                          }
                           ToastWidget.notifyWidget(
                             context,
                             type: NotifyType.error,
