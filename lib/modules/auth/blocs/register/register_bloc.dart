@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_k/global/helpers/database_helper.dart';
 import 'package:project_k/global/utils/extra_utilities.dart';
@@ -16,7 +17,8 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     Emitter<RegisterState> emit,
   ) async {
     emit(RegisterFormSubmissionProcession()); // Show Processing
-
+    //! Save Data in Local Database
+/*
     int insertId = await DatabaseHelper.insert(
       table: 'Users',
       values: {
@@ -34,6 +36,38 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       );
     } else {
       emit(RegisterFormSubmissionFailed(errorMessage: "Register Failed"));
+    }
+
+    */
+
+    try {
+      final credential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+            email: event.emailData,
+            password: event.passwordData,
+          );
+        if (credential.user!=null) {
+          emit(
+        RegisterFormSubmissionSuccess(successMessage: "Register Successfully"),
+      );
+        }
+        else{
+          emit(RegisterFormSubmissionFailed(errorMessage: "Register Failed"));
+        }
+      
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        emit(RegisterFormSubmissionFailed(errorMessage: 'The password provided is too weak.'));
+        
+      } else if (e.code == 'email-already-in-use') {
+        emit(RegisterFormSubmissionFailed(errorMessage: 'The account already exists for that email.'));
+        
+      }
+      
+    } catch (e) {
+      print(e);
+ emit(RegisterFormSubmissionFailed(errorMessage: e.toString()));
+      
     }
   }
 }

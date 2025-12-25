@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:i_validator/i_validator.dart';
 import 'package:project_k/global/helpers/secure_session_helper.dart';
 import 'package:project_k/global/widgets/automatic_button_widget.dart';
 import 'package:project_k/global/widgets/custom_dialog_widget.dart';
 import 'package:project_k/global/widgets/filled_button_widget.dart';
+import 'package:project_k/global/widgets/icon_button_widget.dart';
 import 'package:project_k/global/widgets/text_button_widget.dart';
 import 'package:project_k/global/widgets/textform_field_widget_without_margin.dart';
 import 'package:project_k/global/widgets/toast_widget.dart';
@@ -65,7 +67,7 @@ BlocConsumer
             );
           }
         },
-        
+
         builder: (context, state) {
           return Form(
             key: _formKey,
@@ -89,7 +91,7 @@ BlocConsumer
                     },
                     taskWaitDuration: Duration(seconds: 1),
                   ),
-                
+
                 TextFormFieldWidgetWithoutMargin(
                   controller: emailController,
                   style: TextStyle(fontSize: 14.sp),
@@ -148,16 +150,14 @@ BlocConsumer
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         BlocProvider.of<LoginBloc>(context).add(
-                          LoginFormSubmissionEvent(
+                          LoginFormSubmissionEventWithUsernameAndPassword(
                             usernameData: emailController.text,
                             passwordData: passwordController.text,
                           ),
                         );
                       } else {
                         if (kDebugMode) {
-                          print(
-                          "Error in  Login Form",
-                        );
+                          print("Error in  Login Form");
                         } // Error show on console to developer not user
                         ToastWidget.notifyWidget(
                           context,
@@ -195,6 +195,56 @@ BlocConsumer
                         );
                       },
                       buttonText: "Register Here",
+                    ),
+                  ],
+                ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButtonWidget(
+                      style: IconButton.styleFrom(
+                        foregroundColor: Colors.white,
+                      ),
+                      onPressed: () {
+                        BlocProvider.of<LoginBloc>(
+                          context,
+                        ).add(GoogleLoginEvent());
+                      },
+                      icon: Icon(FontAwesomeIcons.google),
+                    ),
+                    IconButtonWidget(
+                      style: IconButton.styleFrom(
+                        foregroundColor: Colors.white,
+                      ),
+                      onPressed: () {
+                        if (kDebugMode) {
+                          print("Forget Password Clicked");
+                        }
+                      },
+                      icon: Icon(FontAwesomeIcons.facebookF),
+                    ),
+                    IconButtonWidget(
+                      style: IconButton.styleFrom(
+                        foregroundColor: Colors.white,
+                      ),
+                      onPressed: () {
+                        if (kDebugMode) {
+                          print("Forget Password Clicked");
+                        }
+                      },
+                      icon: Icon(FontAwesomeIcons.github),
+                    ),
+                    IconButtonWidget(
+                      style: IconButton.styleFrom(
+                        foregroundColor: Colors.white,
+                      ),
+                      onPressed: () {
+                        if (kDebugMode) {
+                          print("Forget Password Clicked");
+                        }
+                      },
+                      icon: Icon(FontAwesomeIcons.phone),
                     ),
                   ],
                 ),

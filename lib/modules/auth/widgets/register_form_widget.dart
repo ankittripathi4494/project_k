@@ -280,6 +280,7 @@ class RegisterFormWidget extends StatelessWidget {
                       buttonText: "Register",
                     ),
                   ),
+                  
                 ],
               ),
             ),

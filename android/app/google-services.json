@@ -12,7 +12,20 @@
           "package_name": "com.cromac.project_k"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "191699023176-qoj6j99eophu71l17iip9qeuo4ts2714.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cromac.project_k",
+            "certificate_hash": "e267a8fdb03e2394304e103c224d063e4c556c4b"
+          }
+        },
+        {
+          "client_id": "191699023176-994hvsjkvg5lrvpca3nkjc638lg15otf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBJQnMGmnhis9PdMWl4RnMFJRgSRlwJWtQ"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "191699023176-994hvsjkvg5lrvpca3nkjc638lg15otf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "191699023176-1hf0dv6qt7ns5vkjtb1qf9jdvunlvmml.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.cromac.projectk"
+              }
+            }
+          ]
         }
       }
     }

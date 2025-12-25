@@ -1,5 +1,8 @@
+import 'package:duration_button/duration_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:project_k/global/helpers/network_helper.dart';
 import 'package:project_k/global/utils/image_list.dart';
 import 'package:project_k/global/widgets/background_widget.dart';
 import 'package:project_k/global/widgets/my_custom_app_bar.dart';
@@ -11,35 +14,35 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BackgroundWidget(
-      image: DecorationImage(
-        image: AssetImage(ResourseList.backgroundImageResource),
-        fit: BoxFit.cover,
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: MyCustomAppBar(
-          automaticallyImplyLeading: false,
-          titleText: (arguments != null && arguments!.containsKey('title'))
-              ? arguments!['title']
-              : "Login",
-        ),
-        body: Center(
-          child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 20.w),
-            child: BackgroundWidget(
-              colors: [Color(0x99EEAECA), Color(0x9994BBE9)],
-              borderRadius: BorderRadius.all(Radius.circular(20.r)),
-              child: SizedBox(
-                width: 1.sw,
-                
-                child: LoginFormWidget(),
+    return FutureBuilder<bool>(
+      future: NetworkHelper.checkNetworkConnectivity(),
+      builder: (context, snapshot) {
+        return BackgroundWidget(
+          image: DecorationImage(
+            image: AssetImage(ResourseList.backgroundImageResource),
+            fit: BoxFit.cover,
+          ),
+          child: Scaffold(
+            backgroundColor: Colors.transparent,
+            appBar: MyCustomAppBar(
+              automaticallyImplyLeading: false,
+              titleText: (arguments != null && arguments!.containsKey('title'))
+                  ? arguments!['title']
+                  : "Login",
+            ),
+            body: Center(
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 20.w),
+                child: BackgroundWidget(
+                  colors: [Color(0x99EEAECA), Color(0x9994BBE9)],
+                  borderRadius: BorderRadius.all(Radius.circular(20.r)),
+                  child: SizedBox(width: 1.sw, child: LoginFormWidget()),
+                ),
               ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
-  
   }
 }

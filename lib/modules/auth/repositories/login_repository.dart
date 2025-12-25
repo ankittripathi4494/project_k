@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:project_k/global/helpers/database_helper.dart';
 import 'package:project_k/global/utils/extra_utilities.dart';
 import 'package:project_k/modules/auth/blocs/login/login_bloc.dart';
@@ -8,7 +11,7 @@ class LoginRepository {
 
   factory LoginRepository() => instance; // Factory Method
 
-  bool getFormSubmissionForLocalData(LoginFormSubmissionEvent event) {
+  bool getFormSubmissionForLocalData(LoginFormSubmissionEventWithUsernameAndPassword event) {
     const userName = 'demo@demo.com';
     const userPassword = 'Demo@12@34@56';
     if ((event.usernameData.forCompare() == userName.forCompare()) &&
@@ -19,7 +22,9 @@ class LoginRepository {
     }
   }
 
-  Future<bool> getFormSubmissionForLocalDatabase(LoginFormSubmissionEvent event) async {
+  Future<bool> getFormSubmissionForLocalDatabase(
+    LoginFormSubmissionEventWithUsernameAndPassword event,
+  ) async {
     List<Map<String, dynamic>> list = await DatabaseHelper.queryAllRows(
       table: 'Users',
     );
@@ -43,7 +48,42 @@ class LoginRepository {
     }
   }
 
-  getFormSubmissionForAPIs(LoginFormSubmissionEvent event) {}
+  getFormSubmissionForAPIs(LoginFormSubmissionEventWithUsernameAndPassword event) {}
 
-  getFormSubmissionForFirebase(LoginFormSubmissionEvent event) {}
+  Future<Map<String, dynamic>?> getFormSubmissionForFirebase(
+    LoginFormSubmissionEventWithUsernameAndPassword event,
+  ) async {
+    try {
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: event.usernameData,
+        password: event.passwordData,
+      );
+      return {
+        "code": credential.user,
+        "isLogin": true,
+        "reason": 'Login Successful',
+      };
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+        return {
+          "code": 'user-not-found',
+          "isLogin": false,
+          "reason": 'No user found for that email.',
+        };
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+        return {
+          "code": 'wrong-password',
+          "isLogin": false,
+          "reason": 'Wrong password provided for that user.',
+        };
+      }
+    } catch (e) {
+      print(e);
+
+      return {"code": e.toString(), "isLogin": false, "reason": e.toString()};
+    }
+    return null;
+  }
 }

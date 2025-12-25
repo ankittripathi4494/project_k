@@ -51,6 +51,9 @@ dependencies:
   flutter_bloc: ^9.1.1
   path: ^1.9.1
   firebase_core: ^4.3.0
+  firebase_auth: ^6.1.3
+  font_awesome_flutter: ^10.12.0
+  google_sign_in: ^7.2.0
 
 flutter_native_splash:
   # This package generates native code to customize Flutter's default white native splash screen

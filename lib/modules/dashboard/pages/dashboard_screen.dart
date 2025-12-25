@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:project_k/global/helpers/secure_session_helper.dart';
 import 'package:project_k/global/widgets/appbar_widget.dart';
@@ -18,7 +19,8 @@ class DashboardScreen extends StatelessWidget {
         actions: [
           IconButton(onPressed: () {}, icon: Icon(Icons.settings)),
           IconButton(
-            onPressed: () {
+            onPressed: () async {
+              await FirebaseAuth.instance.signOut();
               SecureSessionHelper().removeAll();
               Navigator.pushNamedAndRemoveUntil(
                 context,
