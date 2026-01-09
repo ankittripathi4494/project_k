@@ -46,7 +46,7 @@ dependencies:
   hive: ^2.2.3
   sqflite: ^2.4.2
   objectbox: ^5.0.2
-  flutter_secure_storage: ^9.2.4
+  flutter_secure_storage: ^10.0.0
   flutter_custom_clippers: ^2.1.0
   flutter_bloc: ^9.1.1
   path: ^1.9.1
@@ -54,6 +54,19 @@ dependencies:
   firebase_auth: ^6.1.3
   font_awesome_flutter: ^10.12.0
   google_sign_in: ^7.2.0
+  flutter_dotenv: ^6.0.0
+  firebase_messaging: ^16.1.0
+  flutter_local_notifications: ^19.5.0
+  audioplayers: ^6.5.1
+  logger: ^2.6.2
+  flutter_callkit_incoming: ^3.0.0
+  uuid: ^4.5.2
+  google_mobile_ads: ^7.0.0
+  cloud_firestore: ^6.1.1
+  geolocator: ^14.0.2
+  geocoding: ^4.0.0
+  flutter_map: ^8.2.2
+  latlong2: ^0.9.1
 
 flutter_native_splash:
   # This package generates native code to customize Flutter's default white native splash screen
@@ -218,7 +231,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -238,6 +251,7 @@ flutter:
     - assets/langs/
     - assets/sounds/
     - assets/svgs/
+    - lib/.env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
